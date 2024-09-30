@@ -1,12 +1,10 @@
 # Slide 3-13
-## 3
-### Programming language
+## 3 Programming language
 - Either compile or inteprete based on languages
 - Compile create machine codes or give manual instructions to the operating system/virtual machine
 - Bytecodes are set of instructions to run on VM, this also mean to decompile the bytecodes -> need a specific decompiler like dnspy
 
-## 4
-### Caching strategies
+## 4 Caching strategies
 - Not all information are accessed from disk or database, rather through a third party aka caches
 - Stragies include:
     - C_Aside : Update both cache and db, which guarantee a **very bad desync rate**
@@ -16,8 +14,7 @@
     - W_through : Similar to W_back but directly operate like R_Through, which negates the effect of losing data but increased traffic means increased cost
 
 
-## 5
-### 5 Unique **ID** Generators
+## 5: 5 Unique **ID** Generators
 - Unique ID provides a layer of accessibility(read speed and write indexing) as well as security to information stored in the database.
 - UUID: Random number based UUID might have conflict, but timestamp based UUID and namespace based UUID are safe for using. Due to the nature of hashing, such ID are **not sequential and inefficient for database indexing**.
 - Snowflake: We create an internal indexing system which then guarantee the uniqueness of each ID within their domain, for example:
@@ -26,30 +23,26 @@
 - DB Segment: It's a part of snowflake system, or very similar, which each database server holds a certain number of ID, allows the system to get efficient I/O access.
 - Redis : Got tired of waiting for database query? We keep **everything in the RAM** now apparently.
   
-## 6
-### How Redis persist data
+## 6 How Redis persist data
 Data persistence is not performed on the critical path and doesn't block the write process in Redis.
 
 ● AOF: Write-after log, serve as CDC (Change Data Capture) for Redis
 
 ● RDB: If the server ever go down, all data will be gone. In case of such failures, RDB serve as a backup similar to how Github operate.
 
-## 7
-### Google Sheets as backend
+## 7 Google Sheets as backend
 - Pros: 
     - Cheaper to implement
     - All data are **online and presist** since it's google
 - Cons:
   - God saves us if the serverless computing doesn't create issue with **bots and unauthorized access**
 
-## 8
-### CRUD ( Create Read Update Delete) vs Event Sourcing
+## 8 CRUD ( Create Read Update Delete) vs Event Sourcing
 - If CRUD is the base of all operations, Event Sourcing is the logbook that records everything CRUD does, which allows for **an alternative path of recovering database**
 
 <div style="page-break-after: always;"></div>
 
-## 9
-### Firewall
+## 9 Firewall
 - As a rule of thumb, one must remember. **Firewall protect against outside attacks, not inside attacks.**
 ![alt text](image.png)
 - Firewall can be both hardware or software
@@ -59,8 +52,7 @@ Data persistence is not performed on the critical path and doesn't block the wri
 - Stateful inspection : Track all packets to see if they are acceptable within their domain of data stream given their context.
 - NGFW : Next Generation Firewall that serve as the baseline of how everything is monitored, like **intrusion prevention, deep packets analysis, application awareness.** Such an example would be <span style="color:blue">IBM QRadar SOAR</span>. Built in intrusion prevention, with AI monitored systems to guarantee an application is doing exactly what the policy entails.
 
-## 10 
-### Linux Performance Observability Tool
+## 10 Linux Performance Observability Tool
 ![alt text](image-1.png)
 
 Since there are too many, we focus on most important tools.
@@ -72,16 +64,14 @@ Since there are too many, we focus on most important tools.
 - ‘**lsof**’ - lists open files of the current system.
 - ‘**pidstat**’ - monitors the utilization of system resources by all or specified processes, including CPU, memory, device IO, task switching, threads, etc.
 
-## 11
-### Message queue
+## 11 Message queue
 - Since the system must deal with desynchronization , such as messages brokers, the queue system is used to guarantee the safety of data as well as the order of which data are procssed
 - Queues have three design principles
     - at-most-once: <span style="color:red">will lose data but have exceptional speed</span>
     - at-least-once: guaranteed to have duplicates of data, doomed if you use, doomed if you don't.
     - exactly-once: require another system of managing the queue, but the cost can be alleviated using hashes to guarantee at-least-once is used to confirm the transactions then overwrite the data with same hashes to store them
 
-## 12
-### Where do we cache data
+## 12 Where do we cache data
 Not all data are needed to get cached, only data that are required to transfer.
 Thus the tools that keep data cache should be either get access frequently or convieniently placed near users.
 
@@ -95,8 +85,7 @@ These include, but not limited to:
 Transaction log (Operating log, unconventional method)
 Replication Log (Used frequently since it's a replica of the database at it's stable form)
 
-## 13
-### Session, Cookie, JWT, OAuth2 and the birth of SSO
+## 13 Session, Cookie, JWT, OAuth2 and the birth of SSO
 
 Long ago, when websites don't persist too many functions, a simple login form (today also known as WWW-A) was sufficient. 
 
@@ -110,8 +99,7 @@ OAuth serve as the policy which **All OPERATIONS MUST OBLIGE TO.**
 
 # Slide 14-24
 
-## 14
-### Types of software engineers
+## 14 Types of software engineers
 ![alt text](image-2.png)
 
 Front end is user sided, including **User Interfaces and User Experience**.
@@ -120,15 +108,13 @@ Back end is where **businesses logics are implemented and handled**.
 
 Where the two sides meet are "Full Stack", the one where operations are performed at the most atomic form and delays are rarer, however, should the developers elope with another company, it spells **the end of the product without a manual**.
 
-## 15
-### Webhook vs Polling
+## 15 Webhook vs Polling
 - Since operations don't always complete instantly, we needed a method for **desynchronization and data consistency.**
 ![alt text](image-3.png)
 - Webhook serve as open port of the server, when the operations are run, **the client respond at this webhook address to notify the server of the completion, failure, delay, requirement.**
 - Polling serve as a hotline between server and client and is the **fallback for the interact protocols** when Webhook is unavailable.
 
-## 16
-### Inter-process communications
+## 16 Inter-process communications
 There are 5 types total, and we should only need these 5 unless something really bizarre happens.
 
 - Pipe : Literally connecting one end of a process of another process. Similar to how apis work, it share the same weaknesses apis have 
@@ -137,18 +123,15 @@ There are 5 types total, and we should only need these 5 unless something really
 - Semaphore : Processes waits until the value is set to a certain value, in this way there is **no race condition or desyncrhonization**, but will look very weird.
 - Virtual memory : Programs handle the communication by themselves, which is the most frequently used by large companies, but also the worst solution possible, prone to errors and should the virtual machine is hacked, there is no stopping it since the evil process already detached from the server.
 
-## 17 
-### Upload large files
+## 17 Upload large files
 - **Just cut the file, file cutter**, said the Multi-part upload.
 - We reassemble the files back to their original state at the peers. This guarantee an integrity check is confirmed upon inspection.
 
-## 18
-### Redis vs Memcached
+## 18 Redis vs Memcached
 ![alt text](image-4.png)
 Redis is just superior to memcached, except for the architecture, because memcached relies on multiple processes which allows it for having multiple load balancers.
 
-## 19
-### Eight data structure
+## 19 Eight data structure
 They are known as the big 8 of data.
 
 - Skiplist : Instead of an array, **each item know where the next and the previous item is**.
@@ -160,8 +143,7 @@ They are known as the big 8 of data.
 - Suffix tree : Hoffman tree. 
 - R Tree : The more data overlaps, the better this database perform.
 
-## 20
-### Where are data structures used
+## 20 Where are data structures used
 - list: Singular **array of information** that users can rely on
 - stack: The evolution of any data are kept safe here
 - queue: User actions in-game, since users know what they did and expect the game to **respect that order**
@@ -172,8 +154,7 @@ They are known as the big 8 of data.
 - r-tree: Finding the nearest neighbor, useful for clustering 
 - vertex buffer: Sending data to GPU for rendering, very specific.
 
-## 21
-### Design patterns
+## 21 Design patterns
 
 ♦ Builder: Lego Master - Builds objects step by step, keeping creation and appearance separate. Similar to Factory but only produce evolutions of a class, completed in the last part. 
 
@@ -209,13 +190,15 @@ They are known as the big 8 of data.
 
 ♦ Visitor: Skillful Guest - Adds new operations to a class without altering it. Visitor essentially add operations to classes without changing the classes, making it essential for hot fixes.
 
-## 22
-### Code Review Pyramid
+<div style="page-break-after: always;"></div>
+
+## 22 Code Review Pyramid
 ![alt text](image-5.png)
 - If anything go wrong, ask the reviews.
 
-## 23
-### HTTP Responses
+<div style="page-break-after: always;"></div>
+
+## 23 HTTP Responses
 - Informational (100-199)
 - Success (200-299)
 - Redirection (300-399)
@@ -223,8 +206,7 @@ They are known as the big 8 of data.
 - Server Error (500-599)
   ![alt text](image-6.png)
 
-## 24 
-### Writing codes that run on all platforms 
+## 24 Writing codes that run on all platforms 
 There are many options
 
 - Cross platform intepreter : Constraint and extra works
@@ -235,16 +217,13 @@ There are many options
 - Engage in code sharing platform : How is this a solution ? It reduces the amount of works, but make the codes become complex since the codes are not designed to works with system requirements.
 
 # Slide 25-35
-## 25
-### Latency number we should know
+## 25 Latency number we should know
 ![alt text](image-7.png)
 
-## 26
-### Proxy vs Reverse Proxy
+## 26 Proxy vs Reverse Proxy
 Proxy protect users, reverse proxy protect the servers.
 
-## 27
-### Symmetric vs Asymmetric Encryption
+## 27 Symmetric vs Asymmetric Encryption
 Both peers use the same system of keys which can always be used to access or encrypt the data, and since the data are encrypted in batches, **symmetric's fast.**
 
 However, if bad actor grab a key, it's game over for security. When traffics happens, things are bound to be **lost in traffic**. And there can **only be so many keys** since the algorithms have a length standard.
@@ -253,21 +232,19 @@ Asymmetric keys don't need to transfer the secret key, which allows for **secure
 
 The backside is that the algorithm is too complicated to run efficiently, which make encoding and decoding ultra **slower compared to the symmetric algorithms.**
 
-## 28
-### Load balancing algorithm
+## 28 Load balancing algorithm
 Since a system can't always rely on a single unit to process all data.
 
-#### Static:
+### Static:
 - Round Robin : A queue system which run based on whichever request came first, then whichever request surpass a certain degree of heavy duty will be partitioned into smaller parts. This also mean this balance only maintains **if the processing rate is assumed to be uniform across all instances of services, thus should only be available for stateless services.**
 - Sticky R2 : Basically same as Round Robin but we assume each pair of query is from the same host, prone to errors.
 - Weighted R2 : Now we specify a host is stronger than other host and allowed to handle more requests than others.
 - Hash : Random BS goes here, why bother with balance when you can just send requests based on a rule that completely remove all optimizations.
-#### Dynamic:
+### Dynamic:
 - Least connections : Whichever peer has the least concurrent connections will be chosen for the next requests.
 - Fastest response time : This is **the best solution but the most prone to error** due to the fact that a request might be too light to confirm how fast the system can respond.
 
-## 29
-### What's the deal with Program and Process and even Thread ( get it ?)
+## 29 What's the deal with Program and Process and even Thread ( get it ?)
 
 - Programs are **sets of instructions.**
 - Processes are the **loaded instances of a program in RAM**, hence there can be multiple processes of a same program.
@@ -275,15 +252,18 @@ Since a system can't always rely on a single unit to process all data.
 
 With that established, no threads can run by themselves to produce meaningful actions, they need to notify other threads of their actions, which is why **inter-thread communication is required and must run fast since threads are inherently, I/O blocking operations.**
 
-## 30
-### Cookie vs Session
+## 30 Cookie vs Session
 
 Cookie was created as a solution for authorization, but that also means it **can get stolen.**
 
 The solution was managing **a new entity that can effectively encapsulate the cookie, and server can control it directly** without interfering with legimate operations.
 
-## 31
-### What make URL an URL?
+![alt text](../C_06_CICD/cicd.png)
+
+<div style="page-break-after: always;"></div>
+
+
+## 31 What make URL an URL?
 ![alt text](image-8.png)
 URL are , universal resource locator. URL innit?
 
@@ -295,8 +275,7 @@ Parameters tell the host what the requests need. Fragments of all things are fre
 
 I'm not satisfied with this conclusion but URL are very ancient so we can't say more.
 
-## 32
-### Internet Traffic Routing Policy
+## 32 Internet Traffic Routing Policy
 
 Just like a city, the internet has roads of traffic. Routing are just traffic laws that packets must follow in order to get to an end point. A server can have many mirrors to support a single service, each of these services are considered to be a single end point of the server.
 
@@ -309,21 +288,24 @@ There are total of 6 universal ways of doing it, but just like traffic laws, it 
 - Multivalue answer : I have a coin, meet me on the flip side.
 - Weighted routing policy : Democracy is eternal.
 
-## 33
-### JWT
+<div style="page-break-after: always;"></div>
+
+## 33 JWT
 All technical details are important 
 ![alt text](image-9.png)
 
 JWT is a token used for authentication.
 
-## 34
-### Linux Operating System Commands
+<div style="page-break-after: always;"></div>
+
+## 34 Linux Operating System Commands
 ![alt text](image-10.png)
 
 There is not a better description than this chart, if one need to use a more complicated command, command /help would guide the user.
 
-## 35
-### Linux Boot Process
+<div style="page-break-after: always;"></div>
+
+## 35 Linux Boot Process
 ![alt text](image-11.png)
 
 Power go into the circuit -> BIOS Awaken -> Request and detect devices -> Choose a boot device like disks -> Boot load using grub, execute kernel commands and load supported libraries -> execute systemd thus manage all processes and check all hardwares -> run target files which are default files -> execute startup scripts which are just shell commands and scripts that users customize.
@@ -331,39 +313,42 @@ Power go into the circuit -> BIOS Awaken -> Request and detect devices -> Choose
 <h1> This is the point </h1>
 Well that's one-fifth of this 
 
+<div style="page-break-after: always;"></div>
+
 # Slide 36-46
 
-## 36 
-### Payment system
+## 36 Payment system
 ![alt text](image-12.png)
 
 FedNow is automatic and FedWire which use ACH ( Automatic Clearing House aka only clearing the cached transactions ).
 
 The difference is that ACH needs human operators since there are confirmation made by humans.
 
-## 37
-### OSI Models
+<div style="page-break-after: always;"></div>
+
+## 37 OSI Models
 
 Please Do Not Touch Sausage PizzA
 
 ![alt text](image-13.png)
 
-## 38
-### Fullstack operations
+<div style="page-break-after: always;"></div>
+
+## 38 Fullstack operations
 
 ![alt text](image-14.png)
 
 Everything a fullstack dev need is basically whatever you can imagine needed for a server operation.
 
-## 39
-### Web protocols
+<div style="page-break-after: always;"></div>
+
+## 39 Web protocols
 
 ![alt text](image-15.png)
 
 I don't think there is a remark to be made here, except i'm burned out.
 
-## 40
-### ACID 
+## 40 ACID 
 
 Our favorite rules, among ACIT
 
@@ -372,34 +357,40 @@ Our favorite rules, among ACIT
 - Isolation : Each query acts like the only running operation. We just throw the lost one out.
 - Durability : Data is backed up
 
-## 41
-### OAuth 2.0
+## 41 OAuth 2.0
 
 ![alt text](image-16.png)
 
 The land of promises, essentially just slap SSO on all services. Big companies hate this because they can't access user information.
 
-## 42
-### 9 http request types
+<div style="page-break-after: always;"></div>
+
+## 42: 9 http request types
 
 ![alt text](image-17.png)
 
 I remember all of them by heart.
+We can summarize them with simple syntaxes.
 
-## 43
-### SSO
+<span style="font-size:29px">Get get, put change, post make, delete gone, patch partial, head rolling, connect tunnel, options list, trace loop.
+</span>
+That's all folks.
+
+<div style="page-break-after: always;"></div>
+
+## 43 SSO
 
 ![alt text](image-18.png)
 
 User make a single profile and share the same profile across all services and memes.
 
-## 44
-### IaaS / PaaS / SaaS
+## 44 IaaS / PaaS / SaaS
 
 Infrastructure is the hardware, Platform is the software foundation, Software is the implementation completed.
 
-## 45
-### Data Storage structure
+<div style="page-break-after: always;"></div>
+
+## 45 Data Storage structure
 
 ![alt text](image-19.png)
 
@@ -407,9 +398,171 @@ Block storage is just physical disk storage. File Storage are just a way of abst
 
 Object storage are essentially raw bits data, thus cold. Therefore they don't need write access but frequently need to be retrieved from the service.
 
-## 46
-### Performance chart
+<div style="page-break-after: always;"></div>
+
+## 46 Performance chart
+For database
 
 ![alt text](image-20.png)
 
-#
+<div style="page-break-after: always;"></div>
+
+# Slide 48-1-58
+
+## 47 URL and URI and URN
+
+![alt text](image-23.png)
+
+Locator knows, Identify only,
+
+<div style="page-break-after: always;"></div>
+
+## 48 OAuth2 flows
+
+![alt text](image-21.png)
+
+In Authorization Code flows, the user contact the IdP directly, but the server holds the actual access token and therefore is actually controlling the session.
+
+All other flows, the user control the actual access token and the server only serve as a store clerk.
+
+Think about buying stuffs in a shop.
+
+User have a credit card. If we set AC route, user contact the clerk and have the clerk serve as a representative to the bank. 
+
+If not, user are using checks, also known as debit cards. These checks are made before hand between users and their banking services which get validated or transacted from banks.
+
+## 49 HTTPs 
+And the cluster of issues with it.
+
+![alt text](image-22.png)
+
+Https can be rectified and summarized with a single word. <span style="font-size:49px">**Asymmetric**</span>. 
+
+All websites have their own cert, known as website certificates. In order to verify a website contents, there is a standard string that is verified by using said websites public key.
+
+## 50-51 CI/CD
+
+![alt text](image-24.png)
+
+If a program is a living creature, CI/CD is the age of it.
+
+A program must follows the following cycle of development in order to get deployed.
+
+From local repo : Staged changes are made and committed. Git serve as the historical archiver to save all changes made in the life time of the repo.
+
+Git : After all changes are synced to the remote repo, collaborators can now see the changes and fetch it
+
+Remote : With the changes received, the testing phase begin anew, with automated testing and manual testing to make sure features function as intended, servers can handle workloads, client requirements can be met without sacrificing new potential for developments.
+
+In short, a very standard system. Where did it go all wrong in the actual deployment process?
+
+## The actual massive problems with single CI/CD
+
+<h1 style="font-size:89px">Is this big enough of a problem?</h1>
+
+### Parallel feature development
+
+New feature -> new build ->  new compilation -> new code breaks -> developer cries -> **can't fix the issue** without the original coder
+
+New features rely on old components using **outdated library with more security holes** than swiss cheese
+
+### Basic standard 
+
+**No standard, no convention, more wasting time** in the editor chief department.
+
+No one is **testing the code before integrations** so bugs are everywhere.
+
+**No branching** since it's "harder to manage multiple pieces of code at once"
+
+
+## The solution
+
+Instead of indepedent CI/CD, we needed a more standard system of integrating the new codes without breaking everything we built.
+
+Introducing CI/CD pipelines. Notice how it is different from normal CI/CD.
+
+![alt text](cicd.png)
+
+It's never ending cycles of works, with a twist.
+
+## The actual implementation
+
+Git Pull Request. 
+
+Instead of mashing all builds together, all developers share a **common build tree**, then **branch** from that tree and begin to make their own codes modifications for their functionality specifically.
+
+Note that this **does not cover core library changes.**
+
+This is only half the battle, and the core reason of all the suffering one have to go through.
+
+## 52 Kafka
+
+Kafka is fast, unlike it's difficulty to remember it's name.
+
+The reason is simple: Ordered I/O. Also known by it's better name. **Sequential I/O**.
+
+The cache can **consume time, even with this writing speed**.
+
+Remove cache speed problem by **no cache, aka zero-copying** techniques.
+
+Since the program is using a connection, usually data changes are stated in the socket buffer for speed upload then written to NIC (Network Interface Card) for transfering. 
+
+Kafka removes the need for writing in socket buffer since the server operate on **single-flow principle: in and out** are in **different ports gates**.
+
+<div style="page-break-after: always;"></div>
+
+## 53 Git
+
+![alt text](image-25.png)
+
+Or it's more monstrous official title given by companies.
+
+Distributed version control system.
+
+Everything is only edited on their own branches. Everything is update with CDC and hashed version number. Thanks to this partial editing, and the final changes are only finalized in the push, git allows **desynchronized devsecops**.
+
+<div style="page-break-after: always;"></div>
+
+## 54 Cloud Native Anti Patterns
+
+Whose idea was it to just move everything to the internet?
+
+Let's dive in the most vile piece of skill issue the world ever see in IT.
+
+![alt text](image-26.png)
+
+- Monolithic Architecture: We can't see any other way of operating this sustem. -> We won't support it.
+- Ignoring Cost Optimization: Since everything now runs on the cloud, you will have to put up with whatever problems come with using a remote host.
+- Mutable Infrastructure: You don't ever corporate components together. If you do, you will be doomed to update.
+- Inefficient DB Access Patterns: Overly complicated DB queries(looking at security) and lacks of indexing(FFA styles) leads to bottlenecks. What? You are telling me that database was failing due to bad database designs?
+- Large containers / Bloated image: If you keep putting parts of a program into a singleton unit, you will suffer.
+- Ignoring CI/CD Pipelines: Manually dying inside.
+- Shared Resources Dependency: Since most of the processes are now sharing a same system of access on cloud, everything will go wrong at a slightest sight of a conflict between processes.
+- Using too many cloud services without a strategy: Too many airports without airplanes or customers.
+- Stateful Components: Lifting components up to manage them leading to overheads for states management.
+
+## 55 Monorepo vs Microrepo
+
+![alt text](image-27.png)
+
+Companies have different strategies of developing softwares. 
+
+## 56 Microservice stack
+
+Technology stack 
+
+![alt text](image-28.png)
+
+### Pre-production
+- Define API 
+- Development
+- Continuous
+### Production
+- NGinx 
+- API Gateway 
+- The microservices are deployed on clouds
+- Cache and Full-text Search
+- Communications 
+- Persistence
+- Management & Monitoring
+
