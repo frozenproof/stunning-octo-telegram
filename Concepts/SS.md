@@ -357,6 +357,8 @@ Our favorite rules, among ACIT
 - Isolation : Each query acts like the only running operation. We just throw the lost one out.
 - Durability : Data is backed up
 
+<div style="page-break-after: always;"></div>
+
 ## 41 OAuth 2.0
 
 ![alt text](image-16.png)
@@ -431,6 +433,8 @@ User have a credit card. If we set AC route, user contact the clerk and have the
 
 If not, user are using checks, also known as debit cards. These checks are made before hand between users and their banking services which get validated or transacted from banks.
 
+<div style="page-break-after: always;"></div>
+
 ## 49 HTTPs 
 And the cluster of issues with it.
 
@@ -439,6 +443,8 @@ And the cluster of issues with it.
 Https can be rectified and summarized with a single word. <span style="font-size:49px">**Asymmetric**</span>. 
 
 All websites have their own cert, known as website certificates. In order to verify a website contents, there is a standard string that is verified by using said websites public key.
+
+<div style="page-break-after: always;"></div>
 
 ## 50-51 CI/CD
 
@@ -481,7 +487,7 @@ Instead of indepedent CI/CD, we needed a more standard system of integrating the
 
 Introducing CI/CD pipelines. Notice how it is different from normal CI/CD.
 
-![alt text](cicd.png)
+![alt text](/C_06_CICD/cicd.png)
 
 It's never ending cycles of works, with a twist.
 
@@ -547,6 +553,8 @@ Let's dive in the most vile piece of skill issue the world ever see in IT.
 
 Companies have different strategies of developing softwares. 
 
+<div style="page-break-after: always;"></div>
+
 ## 56 Microservice stack
 
 Technology stack 
@@ -566,3 +574,10 @@ Technology stack
 - Persistence
 - Management & Monitoring
 
+<div style="page-break-after: always;"></div>
+
+## 57 Kurbenetes Tools Ecosystem
+
+![alt text](image-29.png)
+
+## 58 What is k8s
