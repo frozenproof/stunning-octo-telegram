@@ -32,17 +32,19 @@ A Dockerfile is a file that configure the actual docker process for a specific i
 
 ## Example Dockerfile for **helloworld.jar**
 
-### Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jre-slim
+### Use an official OpenJDK runtime as a parent image/ Warning: OpenJDK is deprecated
+### Switching to eclipse-temurin
+FROM eclipse-temurin:21
 
 ### Set the working directory
 WORKDIR /app
 
 ### Copy the JAR file into the container
 COPY helloworld.jar app.jar
+COPY visitorpattern.jar app2.jar
 
 ### Command to run the JAR file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app2.jar"]
 
 # Step 4: Telling the docker to build
 ```
@@ -75,7 +77,7 @@ sudo docker logs hello-world-container
 ```
 - **logs** option specify the output the container generated
 - **hello-world-container** is the container name we chose from previous step
-# Step 8: Stop and remove the container
+# Step 8: Stop and remove the container, image
 
 - Stop the container first
 ```
@@ -85,15 +87,24 @@ sudo docker stop hello-world-container
 ```
 sudo docker rm hello-world-container
 ```
-
+- Remove the image name after stopping it
+```
+sudo docker rmi hello-world-app
+```
+- Remove the image after stopping it
+```
+sudo docker image remove <image-id>
+```
 # Step 9: Cleanup and Pruning
 If you want to free up space, you can remove unused images and containers using:
 
-## Remove stopped containers
+# Remove stopped containers
 docker container prune
 
-## Remove unused images
+# Remove unused images
 docker image prune
 
-## Remove all unused data (containers, networks, images, and optionally volumes)
+# Remove all unused data (containers, networks, images, and optionally volumes)
 docker system prune
+
+# See all containers: docker ps -a 

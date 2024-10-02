@@ -1,11 +1,13 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jre-slim
+### Use an official OpenJDK runtime as a parent image/ Warning: OpenJDK is deprecated
+### Switching to eclipse-temurin
+FROM eclipse-temurin:21
 
-# Set the working directory
+### Set the working directory
 WORKDIR /app
 
-# Copy the JAR file into the container
+### Copy the JAR file into the container
 COPY helloworld.jar app.jar
+COPY visitorpattern.jar app2.jar
 
-# Command to run the JAR file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+### Command to run the JAR file
+ENTRYPOINT ["java", "-jar", "app2.jar"]
