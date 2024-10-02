@@ -10,4 +10,5 @@ COPY helloworld.jar app.jar
 COPY visitorpattern.jar app2.jar
 
 ### Command to run the JAR file
-ENTRYPOINT ["java", "-jar", "app2.jar"]
+# ENTRYPOINT ["java", "-jar", "app2.jar"]
+CMD ["java", "-jar", "app.jar"]

@@ -14,9 +14,12 @@ This tell the docker the default command is running the app.jar
 
 CMD works the same way, but ENTRYPOINT should not be overriden.
 
-## Method 2: manually telling which main file to execute
+## Method 2: manually telling which main file to execute (doesnt work apparently if you use entrypoint in dockerfile)
 ```
-docker run <image_name> java -jar first.jar
+docker run <image_name> java -jar app2.jar
+```
+```
+docker run <image_name> java -jar app.jar
 ```
 This method is more useful if you are using container like a toolset.
 
