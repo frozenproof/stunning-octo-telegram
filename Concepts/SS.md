@@ -1,17 +1,18 @@
 # Slide 3-13
 ## 3 Programming language
-- Either compile or inteprete based on languages
+- Either compile or inteprete based on languages. 
 - Compile create machine codes or give manual instructions to the operating system/virtual machine
-- Bytecodes are set of instructions to run on VM, this also mean to decompile the bytecodes -> need a specific decompiler like dnspy
+- Bytecodes are set of instructions to run on VM, this also mean to decompile the bytecodes -> need a specific decompiler like dnspy to decompile.
+- This also mean languages rely on vm should be less susceptible to memory leaks, since the virtual address wouldn't affect the actual hardware, at the cost of losing some speed optimization since it's a compatibility layered on top of another intepreter.
 
 ## 4 Caching strategies
 - Not all information are accessed from disk or database, rather through a third party aka caches
 - Stragies include:
     - C_Aside : Update both cache and db, which guarantee a **very bad desync rate**
     - R_Through : Cache manage the Database which guarantee **one point of entry, easier to penetrate**
-    - W_Around : If caches dont have data, get from server then update the cache, basic structure
+    - W_Around : If caches dont have data, get from server then update the cache, basic structure.
     - W_Back : Cache is used as a source of truth, then update the DB after a period of time. While **safe and convenient** for using, chances are the caches might get **corrupted/abused and lose all transactions data**, which happens a lot, in a case such as toram online during the first year of operating which had to reset the whole database due to a fraud.
-    - W_through : Similar to W_back but directly operate like R_Through, which negates the effect of losing data but increased traffic means increased cost
+    - W_through : Similar to W_back but **directly operate** like R_Through, which **negates the effect of losing data** but **increased traffic** means increased cost
 
 
 ## 5: 5 Unique **ID** Generators
@@ -51,6 +52,8 @@ Data persistence is not performed on the critical path and doesn't block the wri
 - Application level gateway ( aka proxy firewall) : Create your own rules of filtering packets or implementation of connections regulations.
 - Stateful inspection : Track all packets to see if they are acceptable within their domain of data stream given their context.
 - NGFW : Next Generation Firewall that serve as the baseline of how everything is monitored, like **intrusion prevention, deep packets analysis, application awareness.** Such an example would be <span style="color:blue">IBM QRadar SOAR</span>. Built in intrusion prevention, with AI monitored systems to guarantee an application is doing exactly what the policy entails.
+
+<div style="page-break-after: always;"></div>
 
 ## 10 Linux Performance Observability Tool
 ![alt text](image-1.png)
@@ -96,6 +99,8 @@ But cookie **<span style="color:red">wasn't designed for mobile apps</span>**. S
 Now we have too many applications, thus **<span style="color:red">signing in become a hassle</span>**. SSO solve this issue by sharing the user profile from a central authorization server.
 
 OAuth serve as the policy which **All OPERATIONS MUST OBLIGE TO.**
+
+<div style="page-break-after: always;"></div>
 
 # Slide 14-24
 
@@ -257,8 +262,6 @@ With that established, no threads can run by themselves to produce meaningful ac
 Cookie was created as a solution for authorization, but that also means it **can get stolen.**
 
 The solution was managing **a new entity that can effectively encapsulate the cookie, and server can control it directly** without interfering with legimate operations.
-
-![alt text](../C_06_CICD/cicd.png)
 
 <div style="page-break-after: always;"></div>
 
@@ -555,24 +558,45 @@ Companies have different strategies of developing softwares.
 
 <div style="page-break-after: always;"></div>
 
-## 56 Microservice stack
-
-Technology stack 
+## 56 Microservice stack - Technology stack 
 
 ![alt text](image-28.png)
 
-### Pre-production
-- Define API 
-- Development
-- Continuous
-### Production
-- NGinx 
-- API Gateway 
-- The microservices are deployed on clouds
-- Cache and Full-text Search
-- Communications 
-- Persistence
-- Management & Monitoring
+<table style="width:100%; border: 1px solid black; border-collapse: collapse;">
+  <tr>
+    <th style="width:50%; border: 1px solid black;">Pre-production</th>
+    <th style="width:50%; border: 1px solid black;">Production</th>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;">Define API</td>
+    <td style="border: 1px solid black;">NGinx</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;">Development</td>
+    <td style="border: 1px solid black;">API Gateway</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;">Continuous</td>
+    <td style="border: 1px solid black;">The microservices are deployed on clouds</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;"></td>
+    <td style="border: 1px solid black;">Cache and Full-text Search</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;"></td>
+    <td style="border: 1px solid black;">Communications</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;"></td>
+    <td style="border: 1px solid black;">Persistence</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;"></td>
+    <td style="border: 1px solid black;">Management & Monitoring</td>
+  </tr>
+</table>
+
 
 <div style="page-break-after: always;"></div>
 
@@ -580,4 +604,60 @@ Technology stack
 
 ![alt text](image-29.png)
 
+There are many tools but we just need to know 6 categories:
+- Cluster Management
+- Networking
+- Container Runtime
+- Infra Automation
+- Security
+- Monitoring and Observability
+  
+<div style="page-break-after: always;"></div>
+
 ## 58 What is k8s
+
+![alt text](image-30.png)
+
+### Control Plane Components
+1. API Server: Front end for administrators and users to interact with the cluster.
+2. Scheduler: Assign Pods to Node. Pods are softwares, Node are Platforms.
+3. Controller Manager: Use API server to make sure the system is running pods in healthy state.
+4. etcd (Distributed Key-Value Store) keeping all information of the cluster.
+### Nodes
+1. Pods: A set or subset of containers that share resources within the pod: storage, network, lifecycle
+2. Kubelet: Manage and make sure containers inside a pod run, independent on each pod.
+3. Kube Proxy: Protection between inside and outside, among the pods.
+
+<div style="page-break-after: always;"></div>
+
+# Slide 59-69
+## 59 Cloud History
+
+![alt text](image-31.png)
+
+It's just history and doesn't support the actual image of the current landscape of the technology.
+
+<div style="page-break-after: always;"></div>
+
+## 60 Convert Cloud Native
+
+![alt text](image-32.png)
+
+### 1. Application definition development
+- Database: If a software doesn't rely on database, it should be serverless. Otherwise, it's a desynchronization disaster waiting to happen.
+- Containerization/ Image build: Turn softwares into a proper pod.
+- CI/CD: Put it through the pipeline.
+### 2. Orchestration and management 
+- Orchestration: Automation of everything in a single piece of endpoint.
+
+- Service Proxy, Discovery Mesh
+
+### 3. Runtime
+- Cloud storage: Since everything works on cloud, of course you would need an actual database system that on cloud also always run to ensure connectivity and definitions update.
+- Container runtime: Anything that make sure the container is operational, as presented in docker slide - 61
+
+### 4. Provisioning
+It's about managing and setting up the necessary infrastructure and resources required to run the application.
+- Automation and configuration: 
+### 5. Observability: Understanding the systems and services in operations, allows generation of system data: including operation flows, system image for deployment, health status.
+- 
