@@ -45,7 +45,7 @@ Data persistence is not performed on the critical path and doesn't block the wri
 
 ## 9 Firewall
 - As a rule of thumb, one must remember. **Firewall protect against outside attacks, not inside attacks.**
-![alt text](image.png)
+![alt text](img/image.png)
 - Firewall can be both hardware or software
 - Packet filtering basically prevent unsourced machines from sending packets to the machines by **blocking packets from ports or IP address**
 - Circuit level gateway: Check for TCP handshakes for legitmacy, can be used to prevent DDos attacks before they have a chance of sending an attack
@@ -56,7 +56,7 @@ Data persistence is not performed on the critical path and doesn't block the wri
 <div style="page-break-after: always;"></div>
 
 ## 10 Linux Performance Observability Tool
-![alt text](image-1.png)
+![alt text](img/image-1.png)
 
 Since there are too many, we focus on most important tools.
 
@@ -105,7 +105,7 @@ OAuth serve as the policy which **All OPERATIONS MUST OBLIGE TO.**
 # Slide 14-24
 
 ## 14 Types of software engineers
-![alt text](image-2.png)
+![alt text](img/image-2.png)
 
 Front end is user sided, including **User Interfaces and User Experience**.
 
@@ -115,7 +115,7 @@ Where the two sides meet are "Full Stack", the one where operations are performe
 
 ## 15 Webhook vs Polling
 - Since operations don't always complete instantly, we needed a method for **desynchronization and data consistency.**
-![alt text](image-3.png)
+![alt text](img/image-3.png)
 - Webhook serve as open port of the server, when the operations are run, **the client respond at this webhook address to notify the server of the completion, failure, delay, requirement.**
 - Polling serve as a hotline between server and client and is the **fallback for the interact protocols** when Webhook is unavailable.
 
@@ -133,7 +133,7 @@ There are 5 types total, and we should only need these 5 unless something really
 - We reassemble the files back to their original state at the peers. This guarantee an integrity check is confirmed upon inspection.
 
 ## 18 Redis vs Memcached
-![alt text](image-4.png)
+![alt text](img/image-4.png)
 Redis is just superior to memcached, except for the architecture, because memcached relies on multiple processes which allows it for having multiple load balancers.
 
 ## 19 Eight data structure
@@ -198,7 +198,7 @@ They are known as the big 8 of data.
 <div style="page-break-after: always;"></div>
 
 ## 22 Code Review Pyramid
-![alt text](image-5.png)
+![alt text](img/image-5.png)
 - If anything go wrong, ask the reviews.
 
 <div style="page-break-after: always;"></div>
@@ -209,7 +209,7 @@ They are known as the big 8 of data.
 - Redirection (300-399)
 - Client Error (400-499)
 - Server Error (500-599)
-  ![alt text](image-6.png)
+  ![alt text](img/image-6.png)
 
 ## 24 Writing codes that run on all platforms 
 There are many options
@@ -222,8 +222,10 @@ There are many options
 - Engage in code sharing platform : How is this a solution ? It reduces the amount of works, but make the codes become complex since the codes are not designed to works with system requirements.
 
 # Slide 25-35
+
 ## 25 Latency number we should know
-![alt text](image-7.png)
+
+![alt text](img/image-7.png)
 
 ## 26 Proxy vs Reverse Proxy
 Proxy protect users, reverse proxy protect the servers.
@@ -267,7 +269,7 @@ The solution was managing **a new entity that can effectively encapsulate the co
 
 
 ## 31 What make URL an URL?
-![alt text](image-8.png)
+![alt text](img/image-8.png)
 URL are , universal resource locator. URL innit?
 
 But in all honesty, URL are important.
@@ -295,21 +297,21 @@ There are total of 6 universal ways of doing it, but just like traffic laws, it 
 
 ## 33 JWT
 All technical details are important 
-![alt text](image-9.png)
+![alt text](img/image-9.png)
 
 JWT is a token used for authentication.
 
 <div style="page-break-after: always;"></div>
 
 ## 34 Linux Operating System Commands
-![alt text](image-10.png)
+![alt text](img/image-10.png)
 
 There is not a better description than this chart, if one need to use a more complicated command, command /help would guide the user.
 
 <div style="page-break-after: always;"></div>
 
 ## 35 Linux Boot Process
-![alt text](image-11.png)
+![alt text](img/image-11.png)
 
 Power go into the circuit -> BIOS Awaken -> Request and detect devices -> Choose a boot device like disks -> Boot load using grub, execute kernel commands and load supported libraries -> execute systemd thus manage all processes and check all hardwares -> run target files which are default files -> execute startup scripts which are just shell commands and scripts that users customize.
 
@@ -321,7 +323,7 @@ Well that's one-fifth of this
 # Slide 36-46
 
 ## 36 Payment system
-![alt text](image-12.png)
+![alt text](img/image-12.png)
 
 FedNow is automatic and FedWire which use ACH ( Automatic Clearing House aka only clearing the cached transactions ).
 
@@ -333,13 +335,13 @@ The difference is that ACH needs human operators since there are confirmation ma
 
 Please Do Not Touch Sausage PizzA
 
-![alt text](image-13.png)
+![alt text](img/image-13.png)
 
 <div style="page-break-after: always;"></div>
 
 ## 38 Fullstack operations
 
-![alt text](image-14.png)
+![alt text](img/image-14.png)
 
 Everything a fullstack dev need is basically whatever you can imagine needed for a server operation.
 
@@ -347,7 +349,7 @@ Everything a fullstack dev need is basically whatever you can imagine needed for
 
 ## 39 Web protocols
 
-![alt text](image-15.png)
+![alt text](img/image-15.png)
 
 I don't think there is a remark to be made here, except i'm burned out.
 
@@ -364,7 +366,7 @@ Our favorite rules, among ACIT
 
 ## 41 OAuth 2.0
 
-![alt text](image-16.png)
+![alt text](img/image-16.png)
 
 The land of promises, essentially just slap SSO on all services. Big companies hate this because they can't access user information.
 
@@ -372,7 +374,7 @@ The land of promises, essentially just slap SSO on all services. Big companies h
 
 ## 42: 9 http request types
 
-![alt text](image-17.png)
+![alt text](img/image-17.png)
 
 I remember all of them by heart.
 We can summarize them with simple syntaxes.
@@ -385,7 +387,7 @@ That's all folks.
 
 ## 43 SSO
 
-![alt text](image-18.png)
+![alt text](img/image-18.png)
 
 User make a single profile and share the same profile across all services and memes.
 
@@ -397,7 +399,7 @@ Infrastructure is the hardware, Platform is the software foundation, Software is
 
 ## 45 Data Storage structure
 
-![alt text](image-19.png)
+![alt text](img/image-19.png)
 
 Block storage is just physical disk storage. File Storage are just a way of abstraction to manage the block storage.
 
@@ -408,7 +410,7 @@ Object storage are essentially raw bits data, thus cold. Therefore they don't ne
 ## 46 Performance chart
 For database
 
-![alt text](image-20.png)
+![alt text](img/image-20.png)
 
 <div style="page-break-after: always;"></div>
 
@@ -416,7 +418,7 @@ For database
 
 ## 47 URL and URI and URN
 
-![alt text](image-23.png)
+![alt text](img/image-23.png)
 
 Locator knows, Identify only,
 
@@ -424,7 +426,7 @@ Locator knows, Identify only,
 
 ## 48 OAuth2 flows
 
-![alt text](image-21.png)
+![alt text](img/image-21.png)
 
 In Authorization Code flows, the user contact the IdP directly, but the server holds the actual access token and therefore is actually controlling the session.
 
@@ -441,7 +443,7 @@ If not, user are using checks, also known as debit cards. These checks are made 
 ## 49 HTTPs 
 And the cluster of issues with it.
 
-![alt text](image-22.png)
+![alt text](img/image-22.png)
 
 Https can be rectified and summarized with a single word. <span style="font-size:49px">**Asymmetric**</span>. 
 
@@ -451,7 +453,7 @@ All websites have their own cert, known as website certificates. In order to ver
 
 ## 50-51 CI/CD
 
-![alt text](image-24.png)
+![alt text](img/image-24.png)
 
 If a program is a living creature, CI/CD is the age of it.
 
@@ -522,7 +524,7 @@ Kafka removes the need for writing in socket buffer since the server operate on 
 
 ## 53 Git
 
-![alt text](image-25.png)
+![alt text](img/image-25.png)
 
 Or it's more monstrous official title given by companies.
 
@@ -538,7 +540,7 @@ Whose idea was it to just move everything to the internet?
 
 Let's dive in the most vile piece of skill issue the world ever see in IT.
 
-![alt text](image-26.png)
+![alt text](img/image-26.png)
 
 - Monolithic Architecture: We can't see any other way of operating this sustem. -> We won't support it.
 - Ignoring Cost Optimization: Since everything now runs on the cloud, you will have to put up with whatever problems come with using a remote host.
@@ -552,7 +554,7 @@ Let's dive in the most vile piece of skill issue the world ever see in IT.
 
 ## 55 Monorepo vs Microrepo
 
-![alt text](image-27.png)
+![alt text](img/image-27.png)
 
 Companies have different strategies of developing softwares. 
 
@@ -560,7 +562,7 @@ Companies have different strategies of developing softwares.
 
 ## 56 Microservice stack - Technology stack 
 
-![alt text](image-28.png)
+![alt text](img/image-28.png)
 
 <table style="width:100%; border: 1px solid black; border-collapse: collapse;">
   <tr>
@@ -602,7 +604,7 @@ Companies have different strategies of developing softwares.
 
 ## 57 Kurbenetes Tools Ecosystem
 
-![alt text](image-29.png)
+![alt text](img/image-29.png)
 
 There are many tools but we just need to know 6 categories:
 - Cluster Management
@@ -616,7 +618,7 @@ There are many tools but we just need to know 6 categories:
 
 ## 58 What is k8s
 
-![alt text](image-30.png)
+![alt text](img/image-30.png)
 
 ### Control Plane Components
 1. API Server: Front end for administrators and users to interact with the cluster.
@@ -633,7 +635,7 @@ There are many tools but we just need to know 6 categories:
 # Slide 59-69
 ## 59 Cloud History
 
-![alt text](image-31.png)
+![alt text](img/image-31.png)
 
 It's just history and doesn't support the actual image of the current landscape of the technology.
 
@@ -641,7 +643,7 @@ It's just history and doesn't support the actual image of the current landscape 
 
 ## 60 Convert Cloud Native
 
-![alt text](image-32.png)
+![alt text](img/image-32.png)
 
 ### 1. Application definition development
 - Database: If a software doesn't rely on database, it should be serverless. Otherwise, it's a desynchronization disaster waiting to happen.
@@ -671,7 +673,7 @@ It's about managing and setting up the necessary infrastructure and resources re
 
 ## 61 Docker
 
-![alt text](image-33.png)
+![alt text](img/image-33.png)
 
 Summarized with a sentence: Everything all in one at the same location with minimal external dependency and no hardware restrictions.
 
@@ -683,13 +685,13 @@ Explained in details on how to install and use in C_06_Docker+K8S, due to the le
 
 May or may not be oudated. Need more investigations.
 
-![alt text](image-34.png)
+![alt text](img/image-34.png)
 
 <div style="page-break-after: always;"></div>
 
 ## 63 Git merge vs git rebase vs squash commit
 
-![alt text](image-35.png)
+![alt text](img/image-35.png)
 
 Git merge add modifications to the main branches without destroying changes made in either branch.
 
@@ -699,8 +701,11 @@ Git rebase add modifications behind the lastest commit, turning it into a linear
 
 ## 64 Docker vs Kurbenetes
 
-![alt text](image-36.png)
+![alt text](img/image-36.png)
 
 Explained in details in K8S.
 
-## 65
+## 65 How does Docker work
+
+![alt text](img/image-37.png)
+
