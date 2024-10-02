@@ -650,7 +650,7 @@ It's just history and doesn't support the actual image of the current landscape 
 ### 2. Orchestration and management 
 - Orchestration: Automation of everything in a single piece of endpoint.
 
-- Service Proxy, Discovery Mesh
+- Service Proxy, Discovery Mesh: Intermediator for requests. Instead of letting programs manually configure each dependency, all dependencies are managed by an abstraction layer, known as discovery mesh, allowing easier requests handling.
 
 ### 3. Runtime
 - Cloud storage: Since everything works on cloud, of course you would need an actual database system that on cloud also always run to ensure connectivity and definitions update.
@@ -658,6 +658,49 @@ It's just history and doesn't support the actual image of the current landscape 
 
 ### 4. Provisioning
 It's about managing and setting up the necessary infrastructure and resources required to run the application.
-- Automation and configuration: 
+- Automation and configuration: Literally it but for containers. In this case we are talking about Kurbenetes as a tool.
+- Container registry: Basically a dictionary for containers.
+- Security and Compliance: If the manager can't control the unit then there is no point in deploying it in the first place.
+- Key management
 ### 5. Observability: Understanding the systems and services in operations, allows generation of system data: including operation flows, system image for deployment, health status.
-- 
+### 6 Serverless
+- If something run without a need for interaction but open for inspection, it's called a serverless component.
+- These includes hardware(duh), tools(how wild is this), framework(what), and platform.
+
+<div style="page-break-after: always;"></div>
+
+## 61 Docker
+
+![alt text](image-33.png)
+
+Summarized with a sentence: Everything all in one at the same location with minimal external dependency and no hardware restrictions.
+
+Explained in details on how to install and use in C_06_Docker+K8S, due to the length of this file.
+
+<div style="page-break-after: always;"></div>
+
+## 62 Cloud Network Components Cheatsheet
+
+May or may not be oudated. Need more investigations.
+
+![alt text](image-34.png)
+
+<div style="page-break-after: always;"></div>
+
+## 63 Git merge vs git rebase vs squash commit
+
+![alt text](image-35.png)
+
+Git merge add modifications to the main branches without destroying changes made in either branch.
+
+Git rebase add modifications behind the lastest commit, turning it into a linear update tree.
+
+<div style="page-break-after: always;"></div>
+
+## 64 Docker vs Kurbenetes
+
+![alt text](image-36.png)
+
+Explained in details in K8S.
+
+## 65
