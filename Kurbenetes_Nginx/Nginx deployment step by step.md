@@ -24,6 +24,9 @@ docker build -t cattus-nginx .
 docker run -d \
   --name cattus_nginx_container \
   -p 8080:80 \
+  -v /home/images/data:/data \  # Replace with your absolute path
+  -v /home/images/nginx/html:/usr/share/nginx/html \
+  -v /home/images/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
   cattus-nginx
 ```
 ## Explanation:
@@ -33,5 +36,17 @@ docker run -d \
 
 -p 8080:80: **Maps the container's port 80 to port 8080 on host** (accessible via http://localhost:8080).
 
-
+-v /home/images/nginx/html:/etc/nginx/nginx.html: This mounts your local Nginx configuration file to the container, allowing you to modify it on your host without rebuilding the image.
 # Step 4: Make sure the containers are running
+```
+docker ps -a
+```
+
+If something is wrong, it has to be the conf file that is usually wrong.
+
+# Step 5: Check the actual website that got deployed
+
+Say Cheese
+
+![alt text](image.png)
+
