@@ -734,3 +734,15 @@ One is the tool and one is the platform that support the tool.
 
 They meant structures, which is supported by industry standards.
 
+● ClusterIP:
+ClusterIP is the **default and most common** service type. Kubernetes will assign a  cluster-internal IP address to ClusterIP service. This makes the service only reachable within the cluster.
+
+● NodePort: 
+This exposes the service outside of the cluster by adding a cluster-wide port on top of ClusterIP. We can request the service by NodeIP:NodePort.
+
+● LoadBalancer:
+This exposes the Service externally **using a cloud provider’s load balancer**.
+
+● ExternalName:
+This **maps a Service to a domain name**. This is commonly used to create a service within Kubernetes to represent an external database.
+

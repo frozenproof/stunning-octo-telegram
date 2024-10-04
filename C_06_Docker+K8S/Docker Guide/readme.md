@@ -1,1 +1,0 @@
-Guides moved here to avoid clustering the manuals
