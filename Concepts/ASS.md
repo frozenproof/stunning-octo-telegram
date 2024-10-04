@@ -729,3 +729,8 @@ One is the tool and one is the platform that support the tool.
 <div style="page-break-after: always;"></div>
 
 ## 67 Top 4 Kurbenetes Service Types
+
+![alt text](image-39.png)
+
+They meant structures, which is supported by industry standards.
+
