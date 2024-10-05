@@ -6,3 +6,4 @@ docker stop (docker ps -aq); docker rm (docker ps -aq); docker rmi (docker image
 ```
 
 # Multiheaded security disparity
+It happens when there is a rogue process

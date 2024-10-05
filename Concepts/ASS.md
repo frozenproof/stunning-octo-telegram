@@ -746,3 +746,30 @@ This exposes the Service externally **using a cloud provider’s load balancer**
 ● ExternalName:
 This **maps a Service to a domain name**. This is commonly used to create a service within Kubernetes to represent an external database.
 
+<div style="page-break-after: always;"></div>
+
+## 68 Devops vs noops
+Words that don't mean anything. Devops just mean everyone is working on a branch. Noops means whoever do branches don't know about other branches. It's useful to add new features using noops but any meaningful features need devops.
+
+![alt text](image-41.png)
+
+<div style="page-break-after: always;"></div>
+
+## 69 Logging, Tracings, and Metrics.
+
+Logging is writing system statuses in logs.
+
+Tracing find the sources of details.
+
+Metrics are the statuses.
+
+![alt text](image-42.png)
+
+<div style="page-break-after: always;"></div>
+
+# Slide 70-81
+## 70 (Duplicated slide)
+## 71 Test system functionality
+
+![alt text](image-43.png)
+
