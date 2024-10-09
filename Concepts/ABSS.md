@@ -113,6 +113,8 @@ Back end is where **businesses logics are implemented and handled**.
 
 Where the two sides meet are "Full Stack", the one where operations are performed at the most atomic form and delays are rarer, however, should the developers elope with another company, it spells **the end of the product without a manual**.
 
+<div style="page-break-after: always;"></div>
+
 ## 15 Webhook vs Polling
 - Since operations don't always complete instantly, we needed a method for **desynchronization and data consistency.**
 ![alt text](image-3.png)
@@ -135,6 +137,8 @@ There are 5 types total, and we should only need these 5 unless something really
 ## 18 Redis vs Memcached
 ![alt text](image-4.png)
 Redis is just superior to memcached, except for the architecture, because memcached relies on multiple processes which allows it for having multiple load balancers.
+
+<div style="page-break-after: always;"></div>
 
 ## 19 Eight data structure
 They are known as the big 8 of data.
@@ -947,8 +951,6 @@ This document, as far as I can see, is either stupid or just not functional, I w
 
 ![alt text](image-56.png)
 
-<div style="page-break-after: always;"></div>
-
 - Vertical: The most basic sharding form, which keeps the data in least column per table as possible
   - What are the catches? We all know there is a problem with a strategy. The problems are, sharding vertically only solves security issues, and complicates the process of extracting data.
 - Horizontal: We separate a table into multiple data tables that serve the same purposes. This in turn allows the tables to actually function faster, but need a method of control for how should queries be processed.
@@ -1054,3 +1056,207 @@ Just read it.
 
 ## 94 Visualizing a SQL query
 
+![alt text](image-64.png)
+
+About the execution order:
+
+1. Select command run first. Obviously.
+2. From filter the tables
+3. Join fuse the data together
+4. On connect data1
+5. Where cut data
+6. Group by tell what column gonna get displayed
+7. Having is just more filter
+8. Order by tell how to order based on the chosen column
+9. Limit tell how many records should be used
+
+<div style="page-break-after: always;"></div>
+
+## 95 Top 6 use cases of Object Stores
+
+![alt text](image-65.png)
+
+1. Data Archiving: Basically a compressed format since the data is now no longer actively being used.
+2. Unstructured Data: Data like images, videos, recordings, books, everything need to be saved and controlled.
+3. Cloud Native Storage: Now we put everything in containers, including the actual data itself.
+4. Data lake: Convert data when needed.
+5. Internet of things: What.
+6. Backup and recovery: What else can this not be used in/for? The possibilities are endless.
+
+<div style="page-break-after: always;"></div>
+
+## 96 PosgreSQL my babe
+
+![alt text](image-66.png)
+
+I used posgres too.
+
+<div style="page-break-after: always;"></div>
+
+## 97 Data Pipeline Overview
+
+What is a pipeline anyways? A pipeline is a process standardized into a linear line for better controlling and tuning. 
+
+![alt text](image-67.png)
+
+It's pretty basic and works out exactly as one might consider. 
+
+Collecting data, ingesting mean ordering, store data, compute mean do works with it, consume means actively processing data.
+
+<div style="page-break-after: always;"></div>
+
+## 98 Key concepts to understand Database sharding
+
+Look at this I pasted from the slide.
+
+![alt text](image-68.png)
+
+- Range based sharding: It's horizontal sharding, meaning cutting the database into different tables containing data of different key ranges.
+- Directory based sharding: It's range based but you manually control which range is holding the data. This allows for safer data controls but might not be a good idea for smaller system.
+- Key based sharding: It's hash sharding in a nutshell, but with practical implementation.
+
+<div style="page-break-after: always;"></div>
+
+## 99 Data warehouse and Data lake
+
+Seriously, what are these?
+
+![alt text](image-69.png)
+
+Data warehouse is unified in data types and structures, but data lake can hold anything. You can throw a truck in the lake and it's still a lake.
+
+A data warehouse performs Extract-Transform-Load (ETL) on data. A data lake performs Extract-Load-Transform (ELT). 
+
+A data warehouse is schema-on-write, which means the data is already prepared when written into the data warehouse. A data lake is schema-on-read, so the data is stored as it is. 
+
+## 100 What Serverless DB
+
+![alt text](image-70.png)
+
+Is that even? This thing is a scam. It doesn't serve any purpose other than extra revenue.
+
+<div style="page-break-after: always;"></div>
+
+## 101 Choosing your suffering
+
+![alt text](image-71.png)
+
+All paths are painful, but one must take the path he shall seethe.
+
+<div style="page-break-after: always;"></div>
+
+## 102 Linux file system
+
+An user would know that things are better in home folder for most softwares.
+
+TL;DR
+
+No one cares.
+
+![alt text](image-72.png)
+
+<div style="page-break-after: always;"></div>
+
+## 103 Database Isolation level
+
+Database Isolation is super important, it allows us to do concurrent transactions without breaking desynchronization.
+
+- Serializable: What does that mean? It means we are enforcing concurrent transaction to wait for each other in a queue.
+- Repeatable read: If a transaction is currently running, we want it to keep as close to the original data at the point of transaction as much as possible.
+- Read committed: The changes must not take effect during reading before the commit of the transaction.
+- Read uncommitted: Data can be read by other transactions before the transactions are completed.
+
+One must understand that isolation level does not equal best practices, a problem can need very different isolation level, understanding which isolation level is needed is a skill.
+
+![alt text](image-73.png)
+
+<div style="page-break-after: always;"></div>
+
+## 104 SQL Join
+
+![alt text](image-74.png)
+
+
+- INNER JOIN: Returns matching rows in both tables.
+- LEFT JOIN: Returns all records from the left table, and the matching records from the right table.
+- RIGHT JOIN: Returns all records from the right table, and the matching records from the left table
+- FULL OUTER JOIN: Returns all records where there is a match in either the left or right table.
+
+<div style="page-break-after: always;"></div>
+
+## 105 Database cheatsheet
+
+I don't know what this is, but it's kinda hot. If something go wrong, complains about this. 
+
+![alt text](image-75.png)
+
+<div style="page-break-after: always;"></div>
+
+# Slide 106-118
+## 106 Title slide
+## 107 Choose between RPC and REST
+
+![alt text](image-76.png)
+
+RPC allows calling remote functions on servers as if it executed locally. You see the problem?
+
+<div style="page-break-after: always;"></div>
+
+## 108 Soap vs Rest vs GraphQL vs RPC
+
+![alt text](image-77.png)
+
+What is this?
+
+- SOAP: Simple Object Access Protocol, just xml files.
+- REST: Anything that https can do.
+- GraphQL: JSON files are used.
+- RPC: Anything machines can understand.
+
+<div style="page-break-after: always;"></div>
+
+## 109 gRPC
+
+It's not different from normal RPC, but it's used by Google.
+
+![alt text](image-78.png)
+
+<div style="page-break-after: always;"></div>
+
+## 110 API vs SDK
+
+Why is this even a question?
+
+![alt text](image-79.png)
+
+API is Interface and SDK is Development Kit.
+
+<div style="page-break-after: always;"></div>
+
+## 111 Password manager
+
+![alt text](image-80.png)
+
+- Step 1: When we sign up for a password manager, we enter our email address and set up an account password. The password manager generates a secret key for us. The 3 fields are used to generate MUK (Master Unlock Key) and SRP-X using the 2SKD algorithm. MUK is used to decrypt vaults that store our passwords. Note that the secret key is stored locally, and will not be sent to the password manager’s server side.
+- Step 2: The MUK generated in Step 1 is used to generate the encrypted MP key of the primary keyset. 
+- Steps 3-5: The MP key is then used to generate a private key, which can be used to generate AES keys in other keysets. The private key is also used to generate the vault key. Vault stores a collection of items for us on the server side. The items can be passwords notes etc.
+- Step 6: The vault key is used to encrypt the items in the vault. Because of the complex process, the password manager has no way to know the encrypted passwords. We only need to remember one account password, and the password manager will remember the rest.
+
+This process is retarded, and we should not follow this procedure. The reason is simple, complications don't mean security, only become a hassle eventually.
+
+<div style="page-break-after: always;"></div>
+
+## 112 Identifiers
+
+I thought we talked about this in token slide.
+
+![alt text](image-81.png)
+
+<div style="page-break-after: always;"></div>
+
+## 113 API performance
+
+# What are the most important concepts
+
+## Database ACID
+## Database Isolation 
