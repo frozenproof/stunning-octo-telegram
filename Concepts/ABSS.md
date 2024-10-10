@@ -1256,6 +1256,260 @@ I thought we talked about this in token slide.
 
 ## 113 API performance
 
+![alt text](image-82.png)
+
+The results can be as many as the database allows, but the returned results can be optimized
+
+- Pagination: Cutting data into pages.
+- Async logging: We batch the logs.
+- Caching: Just operate everything in cache. Database is save.
+- Payload compression: Basic practice for most data.
+- Connection pool: Load balancer.
+
+<div style="page-break-after: always;"></div>
+
+## 114 Rest authentication method
+
+![alt text](image-83.png)
+
+There are 4 frequently used types of authentication methods.
+
+- Basic authentication: html form signin.
+- Token authentication: can be used anywhere.
+- Oauth authentication: basically external authentication.
+- Api key authentication: using an encrypted string.
+
+<div style="page-break-after: always;"></div>
+
+## 115 GraphQL ??
+
+![alt text](image-84.png)
+
+We already discussed about the difference. GraphQL is an adapter for the base api, this mean the base api would never get exposed and therefore does not need security updates.
+
+<div style="page-break-after: always;"></div>
+
+## 116 API Architecture style
+
+![alt text](image-85.png)
+
+Tell me about it.
+
+<div style="page-break-after: always;"></div>
+
+## 117 Evolution of API Architecture
+
+![alt text](image-86.png) 
+
+Monolith is everything inside a single gate. Direct access are multiple gates. Then add a load balancer.
+
+<div style="page-break-after: always;"></div>
+
+## 118 Effective and safe API
+
+![alt text](image-87.png)
+
+It's mostly basic stuffs. 
+
+<div style="page-break-after: always;"></div>
+
+# Slide 119-131
+## 119 Api testing
+
+![alt text](image-88.png)
+
+We have 9 types for 9 reasons.
+- Smoke testing: Just make sure a unit is working as print.
+- Functional testing: Do what you need to do.
+- Integration testing: Concurrent API calls.
+- Regression testing: Backward compatibility.
+- Load testing: Just add more works.
+- Stress testing: Find out how the system die.
+- Security testing: Anything can be abused.
+- UI testing: What the fuck is this design?
+- Fuzz testing: Find the border limit of the api.
+
+<div style="page-break-after: always;"></div>
+
+## 120 Tips for API security
+
+![alt text](image-89.png)
+
+It's already visualized here, I have no words.
+
+<div style="page-break-after: always;"></div>
+
+## 121 Api architectural styles(part 2)
+
+![alt text](image-90.png)
+
+Aside from this beautiful chart, what can I say?
+
+<div style="page-break-after: always;"></div>
+
+## 122 API gateway
+
+There are not many things one can learn in a fight. Api gateway is a pub and everyone either compete for computing time or just resources.
+
+In short, waffle house of the software.
+
+![alt text](image-91.png)
+
+Detailed steps in a nutshell
+
+1. The client sends an HTTP request to the API gateway. Ah yes, the floor here is made of flo..
+2. The API gateway parses and validates the attributes in the HTTP request. That's the only thing that even matters.
+3. The API gateway performs allow-list/deny-list checks. Why is api gateway doing the job of firewall?
+4. The API gateway talks to an identity provider for authentication and authorization. Not surprising since the API gateway is doing everything.
+5. The rate limiting rules are applied to the request. At least this one make sense.
+6. Now that the request has passed basic checks, the API gateway finds the relevant service to route to by path matching.
+7. The API gateway transforms the request into the appropriate protocol and sends it to backend microservices. 
+8. The API gateway can handle errors properly, and deals with faults if the error takes a longer time to recover.
+
+<div style="page-break-after: always;"></div>
+
+## 123 Title page
+## 124 Uber techstack
+
+![alt text](image-92.png)
+
+- Web frontend: Uber builds Fusion.js as a modern React framework to create robust web applications. They also develop visualization.js for geospatial visualization scenarios. 
+- Mobile side: Uber builds the RIB cross-platform with the VIPER architecture instead of MVC. This architecture can work with different languages: Swift for iOS, and Java for Android.
+- Service mesh: Uber built Uber Gateway as a dynamic configuration on top of NGINX. The service uses gRPC and QUIC for client-server communication, and Apache Thrift for API definition.
+- Service side: Uber built a unified configuration store named Flipr (later changed to UCDP), H3 as a location-index store library. They use Spring Boot for Java-based services, uAct for event-driven architecture, and Cadence for async workflow orchestration.
+- Database end: the OLTP mainly uses the strongly-consistent DocStore, which employs MySQL and PostgreSQL, along with the RocksDB database engine.
+- Big data: managed through the Hadoop family. Hudi and Parquet are used as file formats, and Alluxio serves as cache. Time-series data is stored in Pinot and AresDB.
+- Data processing: Hive, Spark, and the open-source data ingestion framework Marmaray. Messaging and streaming middleware include Apache Kafka and Apache Flink.
+- DevOps side: Uber utilizes a Monorepo, with a simplified development environment called devpod. Continuous delivery is managed through Netflix Spinnaker, metrics are emitted to uMetric, alarms on uMonitor, and a consistent observability database M3. 
+
+<div style="page-break-after: always;"></div>
+
+## 125 Software Architecture
+
+![alt text](image-93.png)
+
+CQRS (Command Query Responsibility Segregation) is an architectural pattern that separates the handling of commands (actions that change state) from queries (actions that retrieve data)
+
+<div style="page-break-after: always;"></div>
+
+## 126 Twitter techstack
+
+![alt text](image-94.png)
+
+Website so bad they had to use 20 tools.
+
+<div style="page-break-after: always;"></div>
+
+## 127 Netflix techstack database
+
+![alt text](image-95.png)
+
+Considering how netflix is alive and twitter is dead, one can see why planning the tools is needed.
+
+<div style="page-break-after: always;"></div>
+
+## 128 Netflix techstack
+
+![alt text](image-96.png)
+
+If something works, it works. 
+
+<div style="page-break-after: always;"></div>
+
+## 129 CI/CD of Netflix
+
+![alt text](image-97.png)
+
+What am I supposed to write here?
+
+<div style="page-break-after: always;"></div>
+
+## 130 System design blueprint
+
+Almost perfect in my opinion, but this thing sucks.
+
+![alt text](image-98.png)
+
+First of all, what this is is too complicated. We could solve them by putting them like lego pieces, but what if I told you we could solve it in an even better way. Rubik cube style.
+
+The same principle that I wrote for my ai can be used here as well, instead of creating new information, we rearrange the codes automatically to serve the purpose. One of my best practice was the chaos key but damn that thing was too heavily loaded for anything else but locks.
+
+<div style="page-break-after: always;"></div>
+
+## 131 Api protocols
+
+When you thought life is bad, think about api. They exist only to serve a purpose and then they got oudated, now we use adapter layer to solve the issue with outdated apis. 
+
+![alt text](image-99.png)
+
+Aside from very specific cases, use the adapters. This is why interface is powerful, it solves compatibility issues.
+
+<div style="page-break-after: always;"></div>
+
+# Slide 132-143
+## 132 Non functional requirements
+
+![alt text](image-100.png)
+
+ECO AU SSD RA
+
+The rules of thumbs.
+
+Extending Consistently Observable.
+Available usability.
+Scalable secured durability. 
+Resilent agile.
+
+<div style="page-break-after: always;"></div>
+
+## 133 System design acronyms
+
+![alt text](image-101.png)
+
+I don't know, cap is stupid, base is too based, solid is weirdly liquid, and kiss is perfect.
+
+In fact, it's so perfect that we even have a song for it. One last kiss.
+
+Remember, ACID is a meme, consistency is a joke, and no one likes taking responsibility.
+
+<div style="page-break-after: always;"></div>
+
+## 134 Title
+## 135 Microservice architecture
+
+![alt text](image-102.png)
+
+Mostly for giggles, these graphs make no sense. Think about it this way. Microservices are meant to be as portable as possible, so why on earth would you use the same deployment?
+
+Unless you are saying we should shorten this to just service architecture.
+
+<div style="page-break-after: always;"></div>
+
+## 136 Pull vs Push
+
+![alt text](image-103.png)
+
+If pulling mean the receiver request the transaction, the pushing the payer initiate the transaction. I don't know why this is important.
+
+<div style="page-break-after: always;"></div>
+
+## 137 Swift payment
+
+![alt text](image-104.png)
+
+Very long chart of something.
+
+## 137 Event sourcing design
+
+![alt text](image-105.png)
+
+Based on my experiences, always have dual systems running on both designs. CRUD to ensure the front end speed, and Sausage for the actual database.
+
+## 138 What on earth is even this 
+
+![alt text](image-106.png)
+
+We are just replacing software with hardware, which is not wrong, but it has a very specific purpose.
 # What are the most important concepts
 
 ## Database ACID
